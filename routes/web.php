@@ -14,8 +14,10 @@ use App\Http\Controllers\PersonaController;
 |
 */
 
-Route::get('/personas', function () {
+Route::get('/crearPersona', function () {
     return view('formularioPersonas');
 });
 
-Route::post('/personas',[PersonaController::class, "Insertar"]);
+Route::post('/crearPersona',[PersonaController::class, "Insertar"]);
+
+Route::get('/',[PersonaController::class, "Listar"]);

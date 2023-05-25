@@ -19,8 +19,12 @@ class PersonaController extends Controller
         return view("formularioPersonas",[
             "creado" => true
         ]);
-        
+    }
 
-        
+    public function Listar(Request $request){
+        $personas = Persona::all();
+        return view("listarPersonas",[
+            "personas" => $personas
+        ]);
     }
 }

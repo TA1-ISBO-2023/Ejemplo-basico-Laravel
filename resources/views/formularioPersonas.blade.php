@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
-    <form action="/personas" method="post">
+    @include("header")
+    <form action="/crearPersona" method="post">
         @csrf
         Nombre <input type="text" name="nombre" id=""> <br>
         Apellido <input type="text" name="apellido" id=""> <br>
