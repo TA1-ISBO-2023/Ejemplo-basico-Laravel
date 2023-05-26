@@ -9,17 +9,17 @@
 <body>
     @include("header")
     <br>
-    @isset($_GET["eliminado"])
+    @if(session('eliminado'))
         <b> Persona Eliminada</b>
-    @endisset
+    @endif
 
-    @isset($_GET["creado"])
+    @if(session('creado'))
         <b> Persona Creada</b>
-    @endisset
+    @endif
 
-    @isset($_GET["modificado"])
+    @if(session('modificado'))
         <b> Persona modificada</b>
-    @endisset
+    @endif
 
     <table>
         <tr>

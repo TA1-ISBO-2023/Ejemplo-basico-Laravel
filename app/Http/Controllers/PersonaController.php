@@ -15,7 +15,7 @@ class PersonaController extends Controller
         $p -> correo = $request -> post("correo");
 
         $p -> save();
-        return redirect("/?creado=true");
+        return redirect("/")->with("creado",true);
         
     }
 
@@ -30,7 +30,7 @@ class PersonaController extends Controller
         $persona = Persona::findOrFail($idPersona);
         $persona -> delete();
 
-        return redirect("/?eliminado=true");
+        return redirect("/")->with("modificado",true);
 
     }
 
@@ -50,7 +50,7 @@ class PersonaController extends Controller
 
         $persona -> save();
 
-        return redirect("/?modificado=true");
+        return redirect("/")->with("modificado",true);
 
 
     }
