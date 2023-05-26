@@ -15,11 +15,8 @@ class PersonaController extends Controller
         $p -> correo = $request -> post("correo");
 
         $p -> save();
-        $personas = Persona::all();
-        return view("listarPersonas",[
-            "personas" => $personas,
-            "insertado" => true
-        ]);
+        return redirect("/?creado=true");
+        
     }
 
     public function Listar(Request $request){
@@ -30,13 +27,31 @@ class PersonaController extends Controller
     }
 
     public function Eliminar(Request $request, $idPersona){
-        $persona = Persona::find($idPersona);
+        $persona = Persona::findOrFail($idPersona);
         $persona -> delete();
 
-        $personas = Persona::all();
-        return view("listarPersonas",[
-            "personas" => $personas,
-            "eliminado" => true
+        return redirect("/?eliminado=true");
+
+    }
+
+    public function CargarFormularioDeModificacion(Request $request, $idPersona){
+        $persona = Persona::findOrFail($idPersona);
+        return view("formularioModificarPersonas",[
+            "persona" => $persona
         ]);
+    }
+
+    public function Modificar(Request $request){
+        $persona = Persona::find($request -> post("id"));
+        
+        $persona -> nombre = $request -> post("nombre");
+        $persona -> apellido = $request -> post("apellido");
+        $persona -> correo = $request -> post("correo");
+
+        $persona -> save();
+
+        return redirect("/?modificado=true");
+
+
     }
 }

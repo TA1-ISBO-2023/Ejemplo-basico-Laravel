@@ -9,13 +9,18 @@
 <body>
     @include("header")
     <br>
-    @isset($eliminado)
+    @isset($_GET["eliminado"])
         <b> Persona Eliminada</b>
     @endisset
 
-    @isset($insertado)
-    <b> Persona Creada</b>
+    @isset($_GET["creado"])
+        <b> Persona Creada</b>
     @endisset
+
+    @isset($_GET["modificado"])
+        <b> Persona modificada</b>
+    @endisset
+
     <table>
         <tr>
             <td>Id</td>
@@ -35,6 +40,8 @@
             <td>{{ $p -> updated_at }}</td>
             <td>
                 <a href="/eliminarPersona/{{ $p -> id }}">Eliminar</a> 
+                <a href="/modificarPersona/{{ $p -> id }}">Modificar</a> 
+
             </td>
         </tr>
         @endforeach

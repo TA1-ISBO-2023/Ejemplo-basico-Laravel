@@ -22,3 +22,5 @@ Route::post('/crearPersona',[PersonaController::class, "Insertar"]);
 
 Route::get('/',[PersonaController::class, "Listar"]);
 Route::get('/eliminarPersona/{d}', [PersonaController::class,'Eliminar']);
+Route::get('/modificarPersona/{d}', [PersonaController::class,'CargarFormularioDeModificacion']);
+Route::post('/modificarPersona',[PersonaController::class,"Modificar"]);
