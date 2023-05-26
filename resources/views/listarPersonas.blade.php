@@ -9,7 +9,13 @@
 <body>
     @include("header")
     <br>
+    @isset($eliminado)
+        <b> Persona Eliminada</b>
+    @endisset
 
+    @isset($insertado)
+    <b> Persona Creada</b>
+    @endisset
     <table>
         <tr>
             <td>Id</td>
@@ -27,6 +33,9 @@
             <td>{{ $p -> correo }}</td>
             <td>{{ $p -> created_at }}</td>
             <td>{{ $p -> updated_at }}</td>
+            <td>
+                <a href="/eliminarPersona/{{ $p -> id }}">Eliminar</a> 
+            </td>
         </tr>
         @endforeach
     </table>

@@ -15,9 +15,10 @@ class PersonaController extends Controller
         $p -> correo = $request -> post("correo");
 
         $p -> save();
-
-        return view("formularioPersonas",[
-            "creado" => true
+        $personas = Persona::all();
+        return view("listarPersonas",[
+            "personas" => $personas,
+            "insertado" => true
         ]);
     }
 
@@ -25,6 +26,17 @@ class PersonaController extends Controller
         $personas = Persona::all();
         return view("listarPersonas",[
             "personas" => $personas
+        ]);
+    }
+
+    public function Eliminar(Request $request, $idPersona){
+        $persona = Persona::find($idPersona);
+        $persona -> delete();
+
+        $personas = Persona::all();
+        return view("listarPersonas",[
+            "personas" => $personas,
+            "eliminado" => true
         ]);
     }
 }
